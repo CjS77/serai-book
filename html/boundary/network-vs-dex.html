@@ -1,0 +1,452 @@
+<!DOCTYPE HTML>
+<html lang="en" class="rust sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Where Serai Ends and the DEX Begins - Serai Network — Technical Documentation</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="Technical documentation for the Serai network — the decentralized execution layer — as distinct from the Serai DEX reference application. Source of truth: serai-dex/serai @ 4b89cf0206184886e96d0663861596312e5b47d2.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "rust";
+            const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "../searchindex-0381e018.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-7aa8a1f8.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Serai Network — Technical Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/serai-dex/serai" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="where-serai-ends-and-the-dex-begins"><a class="header" href="#where-serai-ends-and-the-dex-begins">Where Serai Ends and the DEX Begins</a></h1>
+<p>This is the chapter the rest of the book builds toward. It answers, from the source, the question
+the project’s own documentation never does: <strong>which parts are the generalized Serai network, which
+parts are the DEX application, and where are the two wired together?</strong></p>
+<p>The short answer, defended below:</p>
+<blockquote>
+<p>Serai <em>is</em> architected as the spec claims — a generalized primitive of <strong>cross-chain custody plus
+programmable in-instructions</strong> — and the machinery that delivers it is genuinely
+application-agnostic. But as <strong>shipped</strong>, the DEX is not merely one consumer of that machinery: it
+is wired back into the network’s monetary policy and, critically, its <strong>security model</strong>. The two
+are cleanly separable in <em>concept and code layering</em>, and economically <em>inseparable at runtime</em>.</p>
+</blockquote>
+<p>Every classification in this chapter is the canonical one; the per-subsystem <code>[NETWORK-CORE]</code> /
+<code>[DEX-APP]</code> / <code>[COUPLED]</code> tags used throughout Parts II–IV all derive from the tables here.</p>
+<h2 id="1-the-generalized-primitive-precisely"><a class="header" href="#1-the-generalized-primitive-precisely">1. The generalized primitive, precisely</a></h2>
+<p>Strip everything else away and Serai’s general offering is:</p>
+<ol>
+<li>A staked validator set forms <strong>threshold multisigs</strong> over external chains (Bitcoin, Ethereum,
+Monero) — see <a href="../chain/validator-sets.html">Validator Sets</a> and <a href="../crypto/overview.html">Cryptography</a>.</li>
+<li>A user’s <strong>deposit</strong> to such a multisig is detected off-chain, and its opaque <code>data</code> payload is
+decoded into an <strong>in-instruction</strong> the Serai runtime executes <strong>atomically on arrival</strong>.</li>
+<li>Value can be <strong>burned</strong> back out, producing a threshold-signed withdrawal on the external chain.</li>
+</ol>
+<p>Points 1 and 3 are pure network. Point 2 — the programmable instruction — is the extension seam an
+“application built on Serai” would plug into. The decode is deliberately application-blind: the
+processor <code>Shorthand::decode</code>s the output’s bytes and produces a <code>RefundableInInstruction</code> without
+interpreting any swap/DEX semantics (<code>code/processor/src/multisigs/mod.rs:66,73,91</code>); meaning is
+assigned only later, on-chain, by the runtime’s <code>execute()</code>.</p>
+<p>That is a real generalization. Its limit is equally real: <strong>the instruction set is a closed
+on-chain enum</strong>, and only one of its variants is application-free.</p>
+<h2 id="2-the-on-chain-boundary--pallet-by-pallet"><a class="header" href="#2-the-on-chain-boundary--pallet-by-pallet">2. The on-chain boundary — pallet by pallet</a></h2>
+<p>Serai’s blockchain is one <code>construct_runtime!</code> (<code>code/substrate/runtime/src/lib.rs:318-343</code>). There
+is <strong>no module boundary, trait abstraction, or “application registry”</strong> separating application
+pallets from network pallets — the crate name is the only signal, and the runtime ABI
+(<code>code/substrate/abi/src/lib.rs:38-59</code>) lists <code>Dex</code> as a first-class call variant right beside
+<code>ValidatorSets</code> and <code>InInstructions</code>.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Pallet</th><th>Class</th><th>Role</th><th>Why this class</th></tr>
+</thead>
+<tbody>
+<tr><td><code>System</code>, <code>Timestamp</code>, <code>Babe</code>, <code>Grandpa</code>, <code>TransactionPayment</code></td><td>NETWORK-CORE</td><td>Substrate base: system, time, consensus, finality, fees</td><td>Application-independent infrastructure</td></tr>
+<tr><td><code>Coins</code></td><td>NETWORK-CORE</td><td>The ledger: native SRI + bridged balances, mint/burn/transfer, bridge-out</td><td>The shared floor both layers stand on; bridge-in/out lives here</td></tr>
+<tr><td><code>ValidatorSets</code></td><td>NETWORK-CORE</td><td>Staking, allocation, sessions, multisig keys, slashing</td><td>Consensus &amp; custody; the heart of the network</td></tr>
+<tr><td><code>InInstructions</code></td><td>NETWORK-CORE*</td><td>Executes signed cross-chain deposit batches</td><td>The instruction <em>pipe</em> is core; its instruction <em>set</em> reaches into the DEX (§3)</td></tr>
+<tr><td><code>Signals</code></td><td>NETWORK-CORE</td><td>Governance: retirement (upgrades) and network halting</td><td>Application-independent protocol governance</td></tr>
+<tr><td><code>EconomicSecurity</code></td><td><strong>COUPLED</strong></td><td>Flags when a network is economically secured</td><td>Reads the <strong>DEX</strong> oracle (<code>code/substrate/economic-security/pallet/src/lib.rs:45-46</code>)</td></tr>
+<tr><td><code>Emissions</code></td><td><strong>COUPLED</strong></td><td>SRI issuance to validators &amp; pools</td><td>Post-security issuance split by <strong>DEX swap volume</strong> (§4)</td></tr>
+<tr><td><code>Dex</code></td><td><strong>DEX-APP</strong></td><td>The AMM: pools, swaps, liquidity — and the price oracle</td><td>The reference application itself</td></tr>
+<tr><td><code>LiquidityTokens</code> (<code>coins::Instance1</code>)</td><td><strong>DEX-APP</strong></td><td>LP-share token accounting</td><td>Exists only to serve the AMM</td></tr>
+<tr><td><code>GenesisLiquidity</code></td><td><strong>DEX-APP</strong></td><td>One-time bootstrap of DEX pools + genesis SRI</td><td>Bootstraps the DEX</td></tr>
+</tbody>
+</table>
+</div>
+<p>* <code>InInstructions</code> is tagged NETWORK-CORE because the batch pipe, signature verification, sequencing
+and bridge-in <code>Transfer</code> are all network. But note its <code>Config</code> is compile-time bound to the DEX and
+its satellites: it requires <code>CoinsConfig + DexConfig + ValidatorSetsConfig + GenesisLiqConfig + EmissionsConfig</code> (<code>code/substrate/in-instructions/pallet/src/lib.rs:45-54</code>). You cannot compile the
+instruction pipe without the DEX in the runtime.</p>
+<p><strong>The externally-callable surface confirms the split.</strong> The <code>serai_abi::Call</code> enum is the exact
+public dispatch surface (the runtime <code>CallFilter</code> rejects anything not representable in it,
+<code>code/substrate/runtime/src/lib.rs:142-149</code>):</p>
+<ul>
+<li>NETWORK-CORE calls: <code>Coins::{transfer,burn,burn_with_instruction}</code>,
+<code>ValidatorSets::{set_keys,report_slashes,allocate,deallocate,claim_deallocation}</code>,
+<code>InInstructions::execute_batch</code>, <code>Signals::{register_retirement_signal,…}</code>,
+<code>Babe/Grandpa::report_equivocation</code>.</li>
+<li>DEX-APP calls: <code>Dex::{add_liquidity,remove_liquidity,swap_exact_tokens_for_tokens, swap_tokens_for_exact_tokens}</code>, <code>LiquidityTokens::{transfer,burn}</code>,
+<code>GenesisLiquidity::{remove_coin_liquidity,oraclize_values}</code>.</li>
+<li><code>Emissions</code> and <code>EconomicSecurity</code> expose <strong>no <code>Call</code> at all</strong> — they are engine-room pallets
+driven purely by <code>on_initialize</code> hooks and internal calls.</li>
+</ul>
+<h2 id="3-the-instruction-interface--the-boundary-in-one-enum"><a class="header" href="#3-the-instruction-interface--the-boundary-in-one-enum">3. The instruction interface — the boundary in one enum</a></h2>
+<p>The in-instruction is where “an application built on Serai” is supposed to live. In practice, the
+enum hardcodes the DEX. Full classification of <code>InInstruction</code>
+(<code>code/substrate/in-instructions/primitives/src/lib.rs:77-82</code>) and its <code>execute()</code> dispatch
+(<code>code/substrate/in-instructions/pallet/src/lib.rs:99-230</code>):</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Variant</th><th>Class</th><th><code>execute()</code> does</th><th>Site</th></tr>
+</thead>
+<tbody>
+<tr><td><code>Transfer(address)</code></td><td><strong>NETWORK-CORE</strong></td><td><code>Coins::mint(address, balance)</code></td><td>pallet <code>:101-103</code></td></tr>
+<tr><td><code>Dex(DexCall::SwapAndAddLiquidity)</code></td><td><strong>DEX-APP</strong></td><td>mint → <code>Dex::swap…</code> → <code>Dex::add_liquidity</code> → refund</td><td>pallet <code>:109-160</code></td></tr>
+<tr><td><code>Dex(DexCall::Swap)</code></td><td><strong>DEX-APP</strong></td><td>mint → <code>Dex::swap…</code> → bridge-out if external</td><td>pallet <code>:161-217</code></td></tr>
+<tr><td><code>GenesisLiquidity(address)</code></td><td><strong>DEX-APP</strong></td><td>mint → <code>GenesisLiquidity::add_coin_liquidity</code></td><td>pallet <code>:220-223</code></td></tr>
+<tr><td><code>SwapToStakedSRI(address, network)</code></td><td><strong>COUPLED</strong></td><td>mint → <code>Emissions::swap_to_staked_sri</code> (DEX-priced swap → <strong>validator stake</strong>)</td><td>pallet <code>:224-227</code></td></tr>
+</tbody>
+</table>
+</div>
+<p><code>DexCall</code> (<code>primitives/src/lib.rs:65-71</code>) has two variants, both DEX. The <code>Shorthand</code> sugar
+(<code>primitives/src/shorthand.rs:23-37</code>) has three cases — <code>Raw</code>, <code>Swap</code>, <code>SwapAndAddLiquidity</code> — of
+which the two DEX ones are <strong>not even wired up yet</strong> (<code>todo!()</code> at <code>shorthand.rs:51-52</code>); only <code>Raw</code>
+is functional (<code>:50</code>).</p>
+<p>So of the whole instruction surface, exactly <strong>one variant — <code>Transfer</code> — is application-free.</strong>
+Everything else is the DEX or routes through it. The generalization is genuine but narrow: the pipe
+is general, the payloads shipped in it are not.</p>
+<pre class="mermaid">flowchart TD
+    D[External deposit + opaque data] --&gt; S["Shorthand::decode&lt;br/&gt;(processor — DEX-blind)"]
+    S --&gt; II{InInstruction}
+    II --&gt;|Transfer| C1["Coins::mint&lt;br/&gt;&lt;b&gt;NETWORK-CORE&lt;/b&gt;"]
+    II --&gt;|Dex Swap / SwapAndAddLiquidity| DX["Dex pallet&lt;br/&gt;&lt;b&gt;DEX-APP&lt;/b&gt;"]
+    II --&gt;|GenesisLiquidity| GL["GenesisLiquidity pallet&lt;br/&gt;&lt;b&gt;DEX-APP&lt;/b&gt;"]
+    II --&gt;|SwapToStakedSRI| EM["Emissions to ValidatorSets::allocate&lt;br/&gt;&lt;b&gt;COUPLED&lt;/b&gt;"]
+</pre>
+
+<h2 id="4-the-coupling-map--where-the-network-depends-on-the-application"><a class="header" href="#4-the-coupling-map--where-the-network-depends-on-the-application">4. The coupling map — where the network depends on the application</a></h2>
+<p>This is the sharpest finding. The network’s own security and monetary pallets <strong>import and call the
+<code>dex</code> pallet.</strong> The couplings, with exact sites:</p>
+<p><strong>(a) The security inversion — core bridge-mint is gated by the DEX price.</strong> The rule that decides
+how much foreign value a multisig may safely custody reads the DEX AMM oracle:</p>
+<ul>
+<li>The DEX produces <code>SecurityOracleValue</code> (the highest observed median price)
+(<code>code/substrate/dex/pallet/src/lib.rs:195-199,481-485</code>).</li>
+<li><code>ValidatorSets::required_stake</code> values a coin via <code>Dex::security_oracle_value(coin)</code>
+(<code>code/substrate/validator-sets/pallet/src/lib.rs:837</code>), and <code>required_stake_for_network</code> sums it
+over supply (<code>:856-863</code>).</li>
+<li><code>AllowMint::is_allowed</code> refuses to mint a bridged coin unless staked value covers that
+DEX-priced requirement (<code>:1185-1196</code>), and the runtime wires <code>coins::Config::AllowMint = ValidatorSets</code> (<code>code/substrate/runtime/src/lib.rs:204-206</code>). So <strong><code>Coins::mint</code> of any external
+coin can be refused because of the AMM’s price</strong> (<code>code/substrate/coins/pallet/src/lib.rs:167-174</code>).</li>
+<li>The same figure guards deallocation (<code>DeallocationWouldRemoveEconomicSecurity</code>,
+<code>validator-sets/pallet/src/lib.rs:610-613</code>).</li>
+</ul>
+<p><strong>(b) EconomicSecurity is defined off the DEX.</strong> A network is “secured” only once
+<code>Dex::security_oracle_value(coin).is_some()</code> <strong>and</strong> <code>AllowMint::is_allowed(…)</code>
+(<code>code/substrate/economic-security/pallet/src/lib.rs:44-50</code>; <code>Config: … + DexConfig</code> at <code>:20</code>).</p>
+<p><strong>(c) Emissions are split by DEX activity.</strong> Post-security SRI issuance is divided by <code>Dex::swap_volume</code>
+and paid into <code>Dex::get_pool_account</code> (<code>code/substrate/emissions/pallet/src/lib.rs:194,275</code>);
+<code>swap_to_staked_sri</code> runs a DEX swap and routes the result straight into <code>ValidatorSets::allocate</code>
+(<code>:388-422</code>).</p>
+<p><strong>(d) GenesisLiquidity bootstraps the DEX</strong> (<code>Dex::add_liquidity</code>/<code>remove_liquidity</code>,
+<code>code/substrate/genesis-liquidity/pallet/src/lib.rs:150,300</code>).</p>
+<p><strong>(e) Shared ledger.</strong> <code>Coins</code> is minted/burned by both the core bridge path and every DEX satellite
+(bridge-in <code>:102</code>, bridge-out <code>:243-255</code>; DEX arms <code>:114,171,215</code>; genesis <code>:103,325</code>; emissions
+<code>:274,352,419</code>).</p>
+<p><strong>(f) The session engine pokes the DEX.</strong> <code>ValidatorSets::new_session</code> calls <code>Dex::on_new_session</code>
+directly (<code>code/substrate/validator-sets/pallet/src/lib.rs:725</code>).</p>
+<pre class="mermaid">flowchart LR
+    subgraph APP["DEX application"]
+        DEX["Dex pallet&lt;br/&gt;AMM + SecurityOracleValue"]
+    end
+    subgraph NET["Serai network core"]
+        VS["ValidatorSets&lt;br/&gt;required_stake / AllowMint"]
+        CO["Coins&lt;br/&gt;mint bridged coin"]
+        ES["EconomicSecurity"]
+        EM["Emissions"]
+    end
+    DEX -- "security_oracle_value" --&gt; VS
+    VS -- "AllowMint gate" --&gt; CO
+    DEX -- "oracle + AllowMint" --&gt; ES
+    DEX -- "swap_volume / pool accounts" --&gt; EM
+    VS -- "on_new_session" --&gt; DEX
+</pre>
+
+<p>The only clean core→core mint path is <code>InInstruction::Transfer</code>, and even <em>that</em> mint passes through
+<code>AllowMint = ValidatorSets::is_allowed</code>, which reads the DEX oracle. <strong>There is no configuration in
+which the running network is decoupled from the DEX.</strong></p>
+<h2 id="5-the-off-chain-stack-has-no-application-seam-at-all"><a class="header" href="#5-the-off-chain-stack-has-no-application-seam-at-all">5. The off-chain stack has no application seam at all</a></h2>
+<p>Off-chain, the story is cleaner but the generality stops earlier. There <strong>is</strong> a real extension
+point — the <code>Network</code> trait (<code>code/processor/src/networks/mod.rs:243+</code>) is the complete “external
+chain” abstraction (associated <code>Curve</code>/<code>Block</code>/<code>Output</code>/<code>Eventuality</code>/<code>Scheduler</code>, constants
+<code>CONFIRMATIONS</code>/<code>DUST</code>/…). To add a chain you implement it, as <code>bitcoin.rs</code>/<code>ethereum.rs</code>/<code>monero.rs</code>
+do. See <a href="../offchain/external-networks.html">External Network Integrations</a>.</p>
+<p>But there is <strong>no “application” abstraction off-chain whatsoever.</strong> The processor produces generic
+<code>InInstructionWithBalance</code>s and never mentions the DEX; the coordinator only reacts to
+<code>InInstructionsEvent::Batch</code> (<code>code/coordinator/src/substrate/mod.rs:14,143</code>). Off-chain generality
+stops at “external network”; application meaning exists only on-chain, in the closed instruction enum.</p>
+<p>And the external-network identity space is itself <strong>closed</strong>: <code>ExternalNetworkId</code> is a fixed 3-variant
+enum with a hand-rolled codec (<code>code/substrate/primitives/src/networks.rs:21-47</code>), with fixed
+<code>EXTERNAL_NETWORKS</code>/<code>NETWORKS</code> arrays (<code>:168-176</code>) and hard-coded coin→network mapping (<code>:322-328</code>,
+<code>:131-137</code>). “Add a chain” is a primitives-plus-runtime <strong>fork</strong>, not a config change or plugin — the
+<code>Network</code> trait is pluggable in software structure, but the identity space it plugs into is not.</p>
+<h2 id="6-thought-experiment--building-a-second-application-on-serai-today"><a class="header" href="#6-thought-experiment--building-a-second-application-on-serai-today">6. Thought experiment — building a second application on Serai today</a></h2>
+<p>Suppose you wanted to ship “Serai Lending” alongside the DEX, reusing the custody network. What would
+the code actually require?</p>
+<ol>
+<li><strong>A new <code>InInstruction</code> variant</strong> (e.g. <code>Lend(...)</code>) added to the closed enum, plus its
+<code>execute()</code> arm — a <strong>runtime fork</strong>, not an extension. The <code>Shorthand</code> decoder would need wiring
+too (its non-<code>Raw</code> cases are still <code>todo!()</code>).</li>
+<li><strong>A new pallet</strong> added to <code>construct_runtime!</code>, and <code>InInstructions::Config</code> extended to bind it —
+again editing core network crates.</li>
+<li><strong>A price/valuation source for economic security.</strong> This is the deep problem: <code>required_stake</code>
+only knows how to value a coin via <code>Dex::security_oracle_value</code>. Any application holding custodied
+value would either have to feed the <em>same</em> DEX oracle or the economic-security math would not
+account for it — there is no application-agnostic valuation interface.</li>
+<li><strong>Off-chain: nothing pluggable.</strong> The processor/coordinator don’t need to know about your app (a
+genuine strength), but they also give you no hooks; your app is purely an on-chain runtime concern.</li>
+</ol>
+<p>The missing abstractions, concretely, are: an <strong>open instruction registry</strong> (vs a closed enum), an
+<strong>application-agnostic valuation/oracle interface</strong> for economic security (vs a hardcoded
+<code>Dex::security_oracle_value</code>), and a <strong>pallet-composition seam</strong> that doesn’t require editing
+<code>InInstructions::Config</code>. None of these exist today.</p>
+<h2 id="7-verdict"><a class="header" href="#7-verdict">7. Verdict</a></h2>
+<ul>
+<li><strong>Unambiguously the network:</strong> <code>System</code>/<code>Timestamp</code>/<code>Babe</code>/<code>Grandpa</code>/<code>TransactionPayment</code>,
+<code>ValidatorSets</code>, <code>Signals</code>; <code>Coins</code> as the mint/burn/transfer + bridge-out ledger; the
+<code>InInstructions</code> pipe and its one application-free instruction <code>Transfer</code>; SRI as the native
+gas/stake asset. Off-chain: the generic <code>Network</code> trait, processor, coordinator, message-queue —
+none mention the DEX.</li>
+<li><strong>Unambiguously the DEX application:</strong> the <code>Dex</code> pallet, <code>LiquidityTokens</code>, <code>GenesisLiquidity</code>;
+their ABI surfaces; <code>InInstruction::Dex</code> + both <code>DexCall</code>s + the <code>Swap</code>/<code>SwapAndAddLiquidity</code>
+shorthands.</li>
+<li><strong>Coupled (nominally network, DEX-dependent at runtime):</strong> <code>EconomicSecurity</code>, <code>Emissions</code>, the
+<code>AllowMint</code> gate on <code>Coins::mint</code>, and <code>SwapToStakedSRI</code> — all reading the DEX oracle or DEX
+activity.</li>
+<li><strong>Net:</strong> Serai is a real “cross-chain custody + programmable in-instructions” layer whose plumbing
+is DEX-agnostic, but whose shipped instantiation folds the DEX into its monetary policy and
+security model. Separable in concept; inseparable as deployed. A reader who wants “the network”
+gets everything in Parts II–IV <strong>except</strong> the AMM internals — but must understand §4’s couplings to
+understand the network’s security at all, which is why <a href="../chain/economic-security.html">Economic Security</a>
+is a first-class chapter of this book.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../crypto/frost.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../appendix/networks-coins.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../crypto/frost.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../appendix/networks-coins.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../mermaid-eefea253.min.js"></script>
+        <script src="../mermaid-init-ccf746f1.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
